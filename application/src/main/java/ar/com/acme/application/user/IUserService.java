@@ -1,0 +1,24 @@
+package ar.com.acme.application.user;
+
+import java.util.Optional;
+import java.util.UUID;
+
+import ar.com.acme.model.phone.Phone;
+import ar.com.acme.model.user.User;
+import ar.com.acme.application.templates.service.IService;
+
+public interface IUserService extends IService<User, UUID> {
+    Optional<User> findByName(String name);
+
+    Optional<User> findByToken(UUID token);
+
+    Optional<User> findByEmail(String email);
+
+    Boolean isValidEmail(String email);
+
+    Boolean isValidPassword(String rawPassword);
+
+    String encodePassword(CharSequence rawPassword);
+
+    Phone addPhone(User user,Phone phone);
+}

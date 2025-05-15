@@ -1,0 +1,174 @@
+### LOGIN AL SISTEMA: obtiene el token BEARER que debe ser usado en todas las
+### pruebas posteriores (copiando el mismo en cada caso). Si expira la sesion
+### de usuario, entonces hay que logearse de nuevo (el tiempo de sesion puede
+### agrandarse con la propiedad: application.jws.token_duration -esta en 180)
+
+POST http://127.0.0.1:8080/auth/login
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
+
+{ "username":"jmfragueiro","password":"fito" }
+
+### LISTA LOS USUARIOS DE LA BASE
+
+GET http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+### OBTIENE UN USUARIO EN PARTICULAR: el unico creado y con ID fijo
+
+GET http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+### CREA UN NUEVO USUARIO: con 2 telefonos
+
+POST http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+
+{
+    "name": "liomessi",
+    "email": "liomessi10@acme.cl",
+    "password": "Hunter2@3!",
+    "phones": [
+        {
+            "number": "4363178",
+            "citycode": "376",
+            "countrycode": "54"
+        },
+        {
+            "number": "4588590",
+            "citycode": "376",
+            "countrycode": "54"
+        }
+    ]
+ }
+
+### CREA UN NUEVO USUARIO: con 1 telefono
+
+POST http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+
+{
+    "name": "maradona",
+    "email": "diego10@acme.cl",
+    "password": "Pelus@3!",
+    "phones": [
+        {
+            "number": "4399178",
+            "citycode": "11",
+            "countrycode": "54"
+        }
+    ]
+ }
+
+### FALLA AL CREAR UN USUARIO CON EMAIL REPETIDO
+
+POST http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+
+{
+    "name": "mailrepet",
+    "email": "diego10@acme.cl",
+    "password": "BadMail@35!",
+    "phones": [
+        {
+            "number": "1599178",
+            "citycode": "021",
+            "countrycode": "54"
+        }
+    ]
+ }
+
+### LISTA LOS USUARIOS DE LA BASE
+
+GET http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+
+### AGREGA UN TELEFONO AL UN USUARIO: hay que cambiar en la URL el ID de usuario con uno de los creados
+
+POST http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069/phones
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+
+{
+    "number": "123456",
+    "citycode": "376",
+    "countrycode": "54"
+}
+
+### DESACTIVA UN USUARIO: hay que cambiar en la URL el ID de usuario con uno de los creados
+
+PUT http://127.0.0.1:8080/user/1a245fd4-35f4-40d3-b5b4-3d4d30a66e02/active/false
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+
+### LISTA LOS USUARIOS DE LA BASE
+
+GET http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+
+### BORRA UN USUARIO: hay que cambiar en la URL el ID de usuario con uno de los creados
+
+DELETE http://127.0.0.1:8080/user/0141c704-cdf3-4f4a-8fe6-95117151af62
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+
+### LISTA LOS USUARIOS DE LA BASE
+
+GET http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+
+### MODIFICA UN USUARIO: hay que cambiar en el body el ID de usuario con uno de los creados
+
+PUT http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+
+{
+    "id": "0141c704-cdf3-4f4a-8fe6-95117151af62",
+    "name": "liomessi12",
+    "email": "lmessi10@acme.cl",
+    "password": "Hunter2@3!",
+    "phones": []
+ }
+
+### TERMINA LA SESION
+
+POST http://127.0.0.1:8080/auth/logout
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5YzExOWY4NS0yYzcxLTQ0YjktYmEwYi0xYTgyNDExZWI4MDUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzE0ODYxNCwiZXhwIjoxNzQ3MTQ4Nzk0fQ.hl2MvpwWW5EFAjZ8dPNQx6pfXbHqpekg3PWdCk75VQ2dxsEg1Pdt1sWFB7ECjl1IABGC-68-BNRCxo0aTrsItQ
+
+###

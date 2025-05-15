@@ -1,0 +1,10 @@
+HELP.md
+target/
+logs/
+hsqldb/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+/*.tmp
+/*.log
+/*.gz
