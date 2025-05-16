@@ -4,90 +4,91 @@ Repositorio para evaluación de JAVA
 
 # 👋 Acerca De
 
-Es una pequeña aplicación Spring-boot REST basada en un esquema de proyecto maven multi-modulo para cumplir con una evaluación de conocimentos de JAVA con los requerimientos estblecidos en el documento "Ejercicio_JAVA-Especialista_Integracion.pdf" ubicado en la raíz del proyecto.
+Es una pequeña aplicación Spring-boot REST basada en un esquema de proyecto maven multi-modulo para cumplir con una evaluación de conocimentos de JAVA con los requerimientos estblecidos en el documento "tools/Ejercicio_JAVA-Especialista_Integracion.pdf" ubicado en la raíz del proyecto.
 
 
 
-## ⚙️ Requirements
+## ⚙️ Requisitos
 
-- Visual Studio Code
+- Visual Studio Code: con extensiones:
+  - Language Support for Java (Red Hat)
+  - Markdown Preview Mermaid Support (Matt Bierner)
+  - Maven for Java (Microsoft)
+  - Debugger for Java (Microsoft)
+  - REST Client (Huachao Mao)
+  - Spring Boot Extension Pack (VMware)
 - JDK 21
 - Maven 3.8.4
+- Squirrel-sql 4.8.0 Standard
+- H2 Database JDBC Driver 2.3.232
 
 
+## 📘 Módulos
 
-## 📘 Technologies
+El proyecto está compuesto por una estructura de módulos que combina ciertos conceptos de la arquitectura hexagonal, el clean code y mi experiencia en el desarrollo y mantenimiento de sistemas. Esto último impregna la implementación generando que ciertos conceptos de dichas teorias hayan sido adaptados a este enfoque que me ha servido, en la práctica, todos estos años. También he tenido en cuenta, en el diseño de la arquitectura, el tamaño de la aplicación requerida.
 
-### Common
+Los módulos son:
 
-| Technology | Purpose |
-| ---------- |----------|
-|Hexagonal architecture| I tried to follow an hexagonal clean architecture when creating this simple example. You can take a look into the project modules to see how the code was divided into application, domain and infrastructure layers. You can also take a look into the interfaces I'm using as "ports" to avoid layer couplings. |
-| [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) | I tried to include some DDD patterns into this very simple example, like Entity, ValueObject or RootAggregate. |
-| [Lombok](https://projectlombok.org/) | Helper to create builders, setters, getters, etc|
-| [MapStruct](https://mapstruct.org/) | Helper to create mappers to pass objects between the different layers |
-| [Spring-boot](https://quarkus.io/) | Java framework that helps you to create a REST microservice easily . |
-| [rest-assured](https://rest-assured.io/) | REST Assured is a Java DSL for simplifying testing of REST based services |
+### Commons
 
-### H2 adapter
+Este módulo incluye definiciones y dependencias generales que se separan dado el bajo acoplamiento entre los módulos model/application y el módulo bootstrap deseado. De esta manera este módulo podría acompañar a cualquiera de los demas en una portación para reutilización en otro proyecto y sin necesidad de agregar toda la cadena de depencias.
 
-| Technology | Purpose |
-| ---------- |----------|
-| [H2Database](https://www.h2database.com/html/main.html) | Very fast, open source, JDBC API. Support embedded and server modes; disk-based or in-memory databases |
-| [Spring Data JPA](https://spring.io/projects/spring-data-jpa) | JPA based repositories implementation |
-| [Flyway](https://flywaydb.org/) | To load database migrations at application startup. |
+### Model
 
-### REST adapter
+Es el módulo que contiene las definiciones del modelo de datos y de los repositorios asociados. La organización del código no está basada en una estructura estándar de directorios sino en un esquema de nomenclatura y un agrupamiento por lo que denomino 'concepto de negocio'. Se define un paquete "base" que define una plantilla general para entidades y repositorios unificando, apalancado en clases genéricas, el código común y permitiendo así imponer ciertas políticas globales y minimizar el código a escribir/mantener.
 
-| Technology | Purpose |
-| ---------- |----------|
-| [springdoc-openapi-ui](https://springdoc.org/) | Helps to automate the generation of API documentation using spring boot projects. |
-| [rest-assured](https://rest-assured.io/) | Testing and validating REST services |
+### Application
 
-## 🚀 How to execute the application
+Contiene las clases del modelo de negocio y los controladores asociados. Aqui también vale lo dicho anteriromente respecto de la organización del código. Se define un paquete "template" que define una plantilla para los controladores CRUD y los servicios básicos unificando, apalancado en clases genéricas, el código común y permitiendo así imponer ciertas políticas globales y minimizar el código a escribir/mantener.
 
-Go to the project root directory and execute the following command to compile, test, package and install the different artifacts in your local maven repository.
+### Adapter
+
+Aqui se utiliza el nombre para dar a entender que es un módulo de interfase entre la aplicación (definida en los módulos Model y Application) y el bootstrap (definido en el módulo Bootstrap), de manera que ambos grupos sean casi totalmente independientes, estableciendo un acoplaiento mínimo basado unicamente en la interacción 'sesión <-> usuario', la cual igualmente, gracias a este módulo, no traspasa las fronteras ni genera dependencias mas fuertes que las mínimas necesarias.
+
+### Bootstrap
+
+Es el módulo encargado de proveer de los servicios de inicialización, gestión de sesiones, control de autenticaciones y autorizaciones. Es el módulo que más depende de, y más trbaja con, las caractarísticas específicas de SpringBoot y justamente su separación permite que la dependencia de los demás módulos para con este framework se reduzca solamente a anotaciones estándar, que se encuentra aplicadas de manera igual o muy similar en otros frameworks. De esta forma, dado el bajo acoplamiento alcanzado para con los módulos Model/Application, se consigue una dependencia suficientemente baja de la aplicación para con SpringBoot y, de igual manera, del bootstrap (con todos sus servicios asociados comentados) para con la aplicación, permitiendo una reutilización relativamente sencilla de cualqeuira de los dos grupos.
+
+
+## 🚀 Cómo ejecutar las pruebas
+
+La forma mas sencilla es ejecutarlo directamente desde el Visual Studio Code (con la configuración de Launch "SPRINGBOOT").
+
+O puede ejecutarse 'a mano' yendo al directorio raíz del proyecto y:
+
+- 1) ejecutar el siguiente comando para compilar, probar, empaquetar e instalar los diferentes artefactos en tu repositorio local de maven:
 
 ```shell
 mvn clean install
 ```
 
-Or use the embedded maven wrapper if you don't have a maven installation.
+O utilizar el wrapper de maven integrado al proyecto, si no se tiene una instalación de maven propia, con:
 
 ```shell
 ./mvnw clean install
 ```
 
-After creating all artifacts you can run the project with the following command:
+- 2) Hay que setear las siguientes variables de entorno (si se ejecuta desde VSCode ya están configuiradas):
+
+  - "SPRING_CONFIG_LOCATION": "classpath:/application.properties,file:${workspaceFolder}\\local\\appext.properties",
+  - "LOGGING_HOME":"${workspaceFolder}\\local\\logs"
+
+- 3) Después de crear todos los artefactos, ejecutar el proyecto con el siguiente comando:
 
 ```shell
 mvn spring-boot:run -pl bootloader
 ```
 
-Or use the embedded maven wrapper if you don't have a maven installation.
+O utilizar el wrapper de maven integrado al proyecto, si no se tiene una instalación de maven propia, con:
 
 ```shell
 ./mvnw spring-boot:run -pl bootloader
 ```
 
-You should see in the console the following log line:
+Si la aplicación queda funcionando correctamente se puede ejecutar las pruebas con abriendo, desde el Visual Studio Code, el archivo tools/postman.http (el cual se ejecuta gracias a la extensión "REST Client"). Ese archivo tiene una serie de pruebas en orden y explica como pasar los valores necesarios entre cada prueba.
 
-```log
-......
-2022-12-29 16:17:44.909  INFO 21694 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
-2022-12-29 16:17:44.918  INFO 21694 --- [           main] c.m.p.s.c.SpringbootRestApplication      : Started SpringbootRestApplication in 4.48 seconds (JVM running for 4.915)
-```
+Por otro lado queda disponible el endpoint:
 
-It means the application is running properly and it will provide the following endpoints:
+- `http://localhost:8081/swagger-ui.html`: Interfaz Swagger basada en el esquema autogenerado de OpenAPI. NOTA: Los UseCases AddPhone y SetActive están configurados con valores especificos.
 
-- `http://localhost:8081/api/v1/prices`. GET http method that will receive three parameters.
-- `http://localhost:8081/v3/api-docs`. OpenAPI schema auto-generated from the swagger annotation provided by the `springdoc` dependency.
-- `http://localhost:8081/swagger-ui.html`. Swagger interface based on the OpenAPI auto-generated schema that helps you to test the `prices` resource endpoint.
-
-### Possible improvements
-
-- Include the [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin) to generate documentation, validations, tests, and code based a provided OpenAPI schema. [OpenAPI generator project](https://github.com/OpenAPITools/openapi-generator) | [OpenAPI](https://github.com/OAI/OpenAPI-Specification).
-- Add Unit tests with [JUnit 5](https://quarkus.io/guides/getting-started-testing) and [Mockito](https://quarkus.io/blog/mocking/) frameworks. As this code is quite simple it make no sense to add unit tests, but could be interesting to illustrate the usage of those frameworks.
-- Add `fail-safe` plugin to run the IT test instead of `sure-fire`.
-- Create the same project with a different framework like [Quarkus](https://quarkus.io/). Quarkus is a full-stack, Kubernetes-native Java framework made for Java virtual machines (JVMs) and native compilation, optimizing Java specifically for containers and enabling it to become an effective platform for serverless, cloud, and Kubernetes environments.
-- Add `javadoc` information to all methods and generate `javadoc` and `source` artifact.
+Vale aclarar finalmente que los logs se generan en el directorio definido por la variable de entorno: LOGGING_HOME.

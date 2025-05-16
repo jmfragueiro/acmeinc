@@ -66,7 +66,8 @@ public class SessionService implements ISessionService {
     }
 
     private void validateCanCreateSession(IPrincipal principal) {
-        // permite o no multiples sesiones de usuario segun la propiedad user_multisession
+        // permitirá o no multiples sesiones de usuario segun la propiedad
+        // application.security.user_multisession en application.properties
         if (principal.getToken() != null && !properties.getSecurity().get("user_multisession").equalsIgnoreCase("true")) {
             throw new AuthException(Constants.MSJ_SES_ERR_USERALREADYLOGGED);
         }
