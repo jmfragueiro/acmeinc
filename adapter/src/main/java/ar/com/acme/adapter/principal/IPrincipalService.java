@@ -1,4 +1,4 @@
-package ar.com.acme.commons.principal;
+package ar.com.acme.adapter.principal;
 
 import java.util.Optional;
 

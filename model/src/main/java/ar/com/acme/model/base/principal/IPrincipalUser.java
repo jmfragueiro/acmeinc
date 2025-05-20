@@ -1,4 +1,4 @@
-package ar.com.acme.commons.principal;
+package ar.com.acme.model.base.principal;
 
 import java.time.LocalDateTime;
 

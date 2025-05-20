@@ -1,6 +1,8 @@
-package ar.com.acme.commons.principal;
+package ar.com.acme.application.templates.principal;
 
 import java.util.Optional;
+
+import ar.com.acme.model.base.principal.IPrincipalUser;
 
 /**
  * <p>Esta interfase define el comportamiento deseado de un servicio que permita obtener y,

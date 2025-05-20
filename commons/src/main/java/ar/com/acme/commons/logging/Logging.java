@@ -1,7 +1,9 @@
-package ar.com.acme.commons;
+package ar.com.acme.commons.logging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ar.com.acme.commons.Constants;
 
 /**
  * Esta clase debe ser utilizada como un wrapper para las operaciones de logging del sistema.

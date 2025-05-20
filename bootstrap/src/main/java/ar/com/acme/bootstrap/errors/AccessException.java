@@ -2,8 +2,8 @@ package ar.com.acme.bootstrap.errors;
 
 import org.springframework.security.access.AccessDeniedException;
 
-import ar.com.acme.commons.Logging;
 import ar.com.acme.commons.Tools;
+import ar.com.acme.commons.logging.Logging;
 import ar.com.acme.commons.Constants;
 
 /**

@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.acme.application.password.IPasswordService;
 import ar.com.acme.application.user.IUserService;
-import ar.com.acme.commons.principal.IPrincipalService;
-import ar.com.acme.commons.principal.IPrincipalUser;
+import ar.com.acme.model.base.principal.IPrincipalUser;
 import lombok.RequiredArgsConstructor;
 
 @Service

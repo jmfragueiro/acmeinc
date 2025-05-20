@@ -4,7 +4,7 @@ Repositorio para evaluación de JAVA
 
 # 👋 Acerca De
 
-Es una pequeña aplicación Spring-boot REST basada en un esquema de proyecto maven multi-modulo para cumplir con una evaluación de conocimentos de JAVA con los requerimientos estblecidos en el documento "tools/Ejercicio_JAVA-Especialista_Integracion.pdf" ubicado en la raíz del proyecto.
+Es una pequeña aplicación Spring-boot REST basada en un esquema de proyecto maven multi-modulo para cumplir con una evaluación de conocimentos de JAVA con los requerimientos establecidos en el documento "tools/Ejercicio_JAVA-Especialista_Integracion.pdf" ubicado en la raíz del proyecto.
 
 
 
@@ -31,7 +31,7 @@ Los módulos son:
 
 ### Commons
 
-Este módulo incluye definiciones y dependencias generales que se separan dado el bajo acoplamiento entre los módulos model/application y el módulo bootstrap deseado. De esta manera este módulo podría acompañar a cualquiera de los demas en una portación para reutilización en otro proyecto y sin necesidad de agregar toda la cadena de depencias.
+Este módulo incluye definiciones y dependencias generales que se separan dado el bajo acoplamiento deseado entre el grupo de módulos model/application y el módulo bootstrap. De esta manera este módulo podría acompañar a cualquiera de los demás en una portación para reutilización en otro proyecto y sin necesidad de agregar toda la cadena de dependencias. Se coloca aquí el paquete "principal" que tiene las definiciones que sirve de base para las aplicadas luego en el módulo "adapter" para desacoplar dichos grupos de módulos.
 
 ### Model
 

@@ -1,5 +1,7 @@
 package ar.com.acme.commons;
 
+import ar.com.acme.commons.logging.Logging;
+
 /**
  * Esta clase de excepcion es la base de la jerarquia de excepciones del framework que PUEDEN
  * NO SER CAPTURADAS dentro de la aplicación sino que se espera que lleguen al usuario con un

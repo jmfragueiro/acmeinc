@@ -5,8 +5,7 @@ import java.util.Collection;
 import java.util.UUID;
 
 import ar.com.acme.application.password.IPasswordService;
-import ar.com.acme.commons.principal.IPrincipal;
-import ar.com.acme.commons.principal.IPrincipalUser;
+import ar.com.acme.model.base.principal.IPrincipalUser;
 
 public class Principal implements IPrincipal<UUID> {
     private final IPrincipalUser<UUID> user;
@@ -20,7 +19,7 @@ public class Principal implements IPrincipal<UUID> {
     }
 
     @Override
-    public IPrincipalUser<UUID> getUser() {
+    public Object getUser() {
         return user;
     }
 

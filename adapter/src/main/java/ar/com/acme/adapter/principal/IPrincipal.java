@@ -1,4 +1,4 @@
-package ar.com.acme.commons.principal;
+package ar.com.acme.adapter.principal;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -30,7 +30,7 @@ import java.util.Collection;
  * @see IPrincipalUser
  */
 public interface IPrincipal<TKI> {
-    IPrincipalUser<TKI> getUser();
+    Object getUser();
 
     String getName();
 

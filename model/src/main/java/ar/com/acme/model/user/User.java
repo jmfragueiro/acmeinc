@@ -1,9 +1,9 @@
 package ar.com.acme.model.user;
 
+import ar.com.acme.model.base.principal.IPrincipalUser;
 import ar.com.acme.model.phone.Phone;
 import ar.com.acme.commons.Constants;
-import ar.com.acme.commons.Logging;
-import ar.com.acme.commons.principal.IPrincipalUser;
+import ar.com.acme.commons.logging.Logging;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
