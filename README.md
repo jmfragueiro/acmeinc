@@ -4,7 +4,7 @@ Repositorio para evaluación de JAVA
 
 # 👋 Acerca De
 
-Es una pequeña aplicación Spring-boot REST basada en un esquema de proyecto maven multi-modulo para cumplir con una evaluación de conocimentos de JAVA con los requerimientos establecidos en el documento "tools/Ejercicio_JAVA-Especialista_Integracion.pdf" ubicado en la raíz del proyecto.
+Es una pequeña aplicación Spring-boot REST basada en un esquema de proyecto maven multi-modulo para cumplir con una evaluación de conocimentos de JAVA con los requerimientos establecidos en el documento "tools/Ejercicio_JAVA-Especialista_Integracion.pdf" ubicado en la raíz del proyecto. Un diagrama general de la aplicación, incluyendo las clases y los aspectos más relevantes, se expone en el archivo "Diagrama General.pdf" en la raíz del proyecto.
 
 
 
