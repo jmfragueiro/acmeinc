@@ -14,12 +14,13 @@ public class Principal implements IPrincipal {
     private final IPasswordService passwordService;
     private final Collection<String> authorities;
 
-    public Principal(User user, IPasswordService passwordService, IPrincipalService<IPrincipal> service) {
+    public Principal(User user, IPasswordService passwordService, Collection<String> authorities) {
         this.user = user;
         this.passwordService = passwordService;
-        this.authorities = service.getAuthorities(this);
+        this.authorities = authorities;
     }
 
+    @Override
     public User getUser() {
         return user;
     }

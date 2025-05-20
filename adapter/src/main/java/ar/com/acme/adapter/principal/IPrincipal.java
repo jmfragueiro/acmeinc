@@ -22,6 +22,8 @@ import java.util.UUID;
  * @see IPrincipalService
  */
 public interface IPrincipal {
+    Object getUser();
+
     String getName();
 
     void setToken(UUID token);

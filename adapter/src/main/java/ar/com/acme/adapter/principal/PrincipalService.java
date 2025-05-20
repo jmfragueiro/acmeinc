@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.acme.application.password.IPasswordService;
 import ar.com.acme.application.user.IUserService;
+import ar.com.acme.model.user.User;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -19,34 +20,29 @@ public class PrincipalService implements IPrincipalService<IPrincipal> {
 
     @Override
     public Optional<IPrincipal> findByName(String name) {
-        var user = userService.findByName(name);
-
-        if (user.isPresent()) {
-            return Optional.of(new Principal(user.get(), passwordService, this));
-        } else {
-            return Optional.empty();
-        }
+        return getPrincipal(userService.findByName(name));
     }
 
     @Override
     public Optional<IPrincipal> findByToken(UUID token) {
-        var user = userService.findByToken(token);
+        return getPrincipal(userService.findByToken(token));
+    }
 
+    @Override
+    public void updatePrincipal(IPrincipal principal) {
+        userService.persist((User)principal.getUser());
+    }
+
+    private Optional<IPrincipal> getPrincipal(Optional<User> user) {
         if (user.isPresent()) {
-            return Optional.of(new Principal(user.get(), passwordService, this));
+            return Optional.of(new Principal(user.get(), passwordService, getAuthorities(user.get())));
         } else {
             return Optional.empty();
         }
     }
 
-    @Override
-    public Collection<String> getAuthorities(IPrincipal principal) {
+    private Collection<String> getAuthorities(User user) {
         // retornar los roles asociados al principal
         return Collections.singleton("ROLE_ADMIN");
-    }
-
-    @Override
-    public void updatePrincipal(IPrincipal principal) {
-        userService.persist(((Principal)principal).getUser());
     }
 }

@@ -49,7 +49,7 @@ public class BasicAuthenticationType implements IAuthenticationType {
             var repoUser = principalService.findByName(authModel.username())
                                            .orElseThrow(() -> new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL));
 
-            var authorities = principalService.getAuthorities(repoUser);
+            var authorities = repoUser.getAuthorities();
 
             return new AuthenticationToken(repoUser, authModel.password(), authorities);
         }
