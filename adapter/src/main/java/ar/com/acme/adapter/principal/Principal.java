@@ -5,23 +5,22 @@ import java.util.Collection;
 import java.util.UUID;
 
 import ar.com.acme.application.password.IPasswordService;
-import ar.com.acme.model.user.User;
-import ar.com.acme.commons.Constants;
-import ar.com.acme.commons.Logging;
+import ar.com.acme.commons.principal.IPrincipal;
+import ar.com.acme.commons.principal.IPrincipalUser;
 
-public class Principal implements IPrincipal {
-    private final User user;
+public class Principal implements IPrincipal<UUID> {
+    private final IPrincipalUser<UUID> user;
     private final IPasswordService passwordService;
     private final Collection<String> authorities;
 
-    public Principal(User user, IPasswordService passwordService, Collection<String> authorities) {
+    public Principal(IPrincipalUser<UUID> user, IPasswordService passwordService, Collection<String> authorities) {
         this.user = user;
         this.passwordService = passwordService;
         this.authorities = authorities;
     }
 
     @Override
-    public User getUser() {
+    public IPrincipalUser<UUID> getUser() {
         return user;
     }
 
@@ -52,17 +51,7 @@ public class Principal implements IPrincipal {
 
     @Override
     public boolean canOperate() {
-        if (!user.isAlive()) {
-            Logging.info(getClass(), Constants.MSJ_USR_ERR_DELETED);
-            return false;
-        }
-
-        if (!user.getActive()) {
-            Logging.info(getClass(), Constants.MSJ_USR_ERR_USERINACTIVE);
-            return false;
-        }
-
-        return true;
+        return user.canOperate();
     }
 
     @Override

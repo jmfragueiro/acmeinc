@@ -1,4 +1,4 @@
-package ar.com.acme.bootstrap.logging;
+package ar.com.acme.commons.logging;
 
 import ch.qos.logback.core.PropertyDefinerBase;
 

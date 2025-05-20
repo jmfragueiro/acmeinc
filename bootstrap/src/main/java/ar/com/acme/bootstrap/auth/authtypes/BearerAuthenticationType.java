@@ -1,10 +1,9 @@
-package ar.com.acme.bootstrap.auth.types;
+package ar.com.acme.bootstrap.auth.authtypes;
 
 import java.util.UUID;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.principal.IPrincipal;
-import ar.com.acme.adapter.principal.IPrincipalService;
+import ar.com.acme.adapter.principal.PrincipalService;
 import ar.com.acme.bootstrap.auth.support.AuthenticationToken;
 import ar.com.acme.bootstrap.errors.AuthException;
 import ar.com.acme.commons.Constants;
@@ -15,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Service(Constants.SYS_CAD_HTTPAUTH_BEARER)
 @RequiredArgsConstructor
 public class BearerAuthenticationType implements IAuthenticationType {
-        private final IPrincipalService<IPrincipal> principalService;
+        private final PrincipalService principalService;
         private final IJwsService jwsService;
 
         @Override

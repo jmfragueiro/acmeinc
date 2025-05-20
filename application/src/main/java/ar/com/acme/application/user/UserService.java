@@ -92,4 +92,11 @@ public class UserService extends ar.com.acme.application.templates.service.Servi
 
         return phone;
     }
+
+    @Override
+    public User update(Object user) {
+        // se usa Object por la invariancia
+        // de los tipos genéricos de java
+        return persist((User)user);
+    }
 }

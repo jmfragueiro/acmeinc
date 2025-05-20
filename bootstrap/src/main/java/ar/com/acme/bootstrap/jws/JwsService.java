@@ -5,7 +5,7 @@ import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.principal.IPrincipal;
+import ar.com.acme.adapter.principal.Principal;
 import ar.com.acme.commons.Constants;
 import ar.com.acme.commons.Properties;
 
@@ -30,7 +30,7 @@ public class JwsService implements IJwsService {
     }
 
     @Override
-    public String generateJws(IPrincipal source) {
+    public String generateJws(Principal source) {
         return Jwts.builder()
                    .header()
                    .keyId(this.realm)

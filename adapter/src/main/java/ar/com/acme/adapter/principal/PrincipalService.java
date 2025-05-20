@@ -9,31 +9,20 @@ import org.springframework.stereotype.Service;
 
 import ar.com.acme.application.password.IPasswordService;
 import ar.com.acme.application.user.IUserService;
-import ar.com.acme.model.user.User;
+import ar.com.acme.commons.principal.IPrincipalService;
+import ar.com.acme.commons.principal.IPrincipalUser;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class PrincipalService implements IPrincipalService<IPrincipal> {
+public class PrincipalService implements IPrincipalService<Principal, UUID> {
     private final IUserService userService;
     private final IPasswordService passwordService;
 
     @Override
-    public Optional<IPrincipal> findByName(String name) {
-        return getPrincipal(userService.findByName(name));
-    }
+    public Optional<Principal> findByName(String name) {
+        var user = userService.findByName(name);
 
-    @Override
-    public Optional<IPrincipal> findByToken(UUID token) {
-        return getPrincipal(userService.findByToken(token));
-    }
-
-    @Override
-    public void updatePrincipal(IPrincipal principal) {
-        userService.persist((User)principal.getUser());
-    }
-
-    private Optional<IPrincipal> getPrincipal(Optional<User> user) {
         if (user.isPresent()) {
             return Optional.of(new Principal(user.get(), passwordService, getAuthorities(user.get())));
         } else {
@@ -41,7 +30,23 @@ public class PrincipalService implements IPrincipalService<IPrincipal> {
         }
     }
 
-    private Collection<String> getAuthorities(User user) {
+    @Override
+    public Optional<Principal> findByToken(UUID token) {
+        var user = userService.findByToken(token);
+
+        if (user.isPresent()) {
+            return Optional.of(new Principal(user.get(), passwordService, getAuthorities(user.get())));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public void updatePrincipal(Principal principal) {
+        userService.update(principal.getUser());
+    }
+
+    private Collection<String> getAuthorities(IPrincipalUser<UUID> user) {
         // retornar los roles asociados al principal
         return Collections.singleton("ROLE_ADMIN");
     }

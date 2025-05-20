@@ -1,10 +1,9 @@
-package ar.com.acme.bootstrap.auth.types;
+package ar.com.acme.bootstrap.auth.authtypes;
 
 import java.util.Base64;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.principal.IPrincipal;
-import ar.com.acme.adapter.principal.IPrincipalService;
+import ar.com.acme.adapter.principal.PrincipalService;
 import ar.com.acme.bootstrap.auth.support.AuthenticationModel;
 import ar.com.acme.bootstrap.auth.support.AuthenticationToken;
 import ar.com.acme.bootstrap.errors.AuthException;
@@ -17,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Service(Constants.SYS_CAD_HTTPAUTH_BASIC)
 @RequiredArgsConstructor
 public class BasicAuthenticationType implements IAuthenticationType {
-        private final IPrincipalService<IPrincipal> principalService;
+        private final PrincipalService principalService;
         private final Properties properties;
 
         @Override

@@ -17,21 +17,23 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5Y2M4NTM1Yi1kZDM5LTRiNTctOWM1Ny0yZWY4NDlmZmE4MzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDA1MywiZXhwIjoxNzQ3NzYwMjMzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.FQzVcXRVIkyOATGoCJLdOMHypw3cZ9eVHWAVqiIsUXNlcxkKg80EK76WQk6mIY1Jk7_kzYZFWF1u_zZlBJrnNQ
+
 ### OBTIENE UN USUARIO EN PARTICULAR: el unico creado y con ID fijo
 
 GET http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5Y2M4NTM1Yi1kZDM5LTRiNTctOWM1Ny0yZWY4NDlmZmE4MzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDA1MywiZXhwIjoxNzQ3NzYwMjMzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.FQzVcXRVIkyOATGoCJLdOMHypw3cZ9eVHWAVqiIsUXNlcxkKg80EK76WQk6mIY1Jk7_kzYZFWF1u_zZlBJrnNQ
+
 ### CREA UN NUEVO USUARIO: con 2 telefonos
 
 POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5Y2M4NTM1Yi1kZDM5LTRiNTctOWM1Ny0yZWY4NDlmZmE4MzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDA1MywiZXhwIjoxNzQ3NzYwMjMzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.FQzVcXRVIkyOATGoCJLdOMHypw3cZ9eVHWAVqiIsUXNlcxkKg80EK76WQk6mIY1Jk7_kzYZFWF1u_zZlBJrnNQ
 
 {
     "name": "liomessi",
@@ -57,7 +59,7 @@ POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5Y2M4NTM1Yi1kZDM5LTRiNTctOWM1Ny0yZWY4NDlmZmE4MzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDA1MywiZXhwIjoxNzQ3NzYwMjMzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.FQzVcXRVIkyOATGoCJLdOMHypw3cZ9eVHWAVqiIsUXNlcxkKg80EK76WQk6mIY1Jk7_kzYZFWF1u_zZlBJrnNQ
 
 {
     "name": "maradona",
@@ -78,7 +80,7 @@ POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5Y2M4NTM1Yi1kZDM5LTRiNTctOWM1Ny0yZWY4NDlmZmE4MzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDA1MywiZXhwIjoxNzQ3NzYwMjMzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.FQzVcXRVIkyOATGoCJLdOMHypw3cZ9eVHWAVqiIsUXNlcxkKg80EK76WQk6mIY1Jk7_kzYZFWF1u_zZlBJrnNQ
 
 {
     "name": "mailrepet",
@@ -99,15 +101,15 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5Y2M4NTM1Yi1kZDM5LTRiNTctOWM1Ny0yZWY4NDlmZmE4MzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDA1MywiZXhwIjoxNzQ3NzYwMjMzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.FQzVcXRVIkyOATGoCJLdOMHypw3cZ9eVHWAVqiIsUXNlcxkKg80EK76WQk6mIY1Jk7_kzYZFWF1u_zZlBJrnNQ
 
 ### AGREGA UN TELEFONO AL UN USUARIO: hay que cambiar en la URL el ID de usuario con uno de los creados
 
-POST http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069/phones
+POST http://127.0.0.1:8080/user/4defccbe-78bb-4cd8-a3e3-09af3a562af1/phones
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5Y2M4NTM1Yi1kZDM5LTRiNTctOWM1Ny0yZWY4NDlmZmE4MzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDA1MywiZXhwIjoxNzQ3NzYwMjMzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.FQzVcXRVIkyOATGoCJLdOMHypw3cZ9eVHWAVqiIsUXNlcxkKg80EK76WQk6mIY1Jk7_kzYZFWF1u_zZlBJrnNQ
 
 {
     "number": "123456",
@@ -117,35 +119,35 @@ Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNm
 
 ### DESACTIVA UN USUARIO: hay que cambiar en la URL el ID de usuario con uno de los creados
 
-PUT http://127.0.0.1:8080/user/1a245fd4-35f4-40d3-b5b4-3d4d30a66e02/active/false
+PUT http://127.0.0.1:8080/user/4defccbe-78bb-4cd8-a3e3-09af3a562af1/active/false
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIyYzAzNmY1My00MWVhLTRlYzQtOTczZS1jNTEyZTBkZGE3OGUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTIyNSwiZXhwIjoxNzQ3MzQ1NDA1LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.0_UkEMdn7Ii2n-qKMaZNWfvRSNJT6FgzUUqY42w-zo6n372g8jo397w5WZy41uK5jnnkmFUFBwWIYGrxFwbvvQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwNGNhYzg2NC1hNjA1LTQ0MDEtOWE1Yy1iZDYwOTAyM2Q2ZmIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDI0MCwiZXhwIjoxNzQ3NzYwNDIwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.DVRjwIvLxDpctc6VUhONL_HGLA_YNuNMe06efnnLT342KfE9q9y990J8SX1lFctrs_RJDwIMOkY1nl_sYx4l_g
 
-### LISTA LOS USUARIOS DE LA BASE
+### LISTA LOS USUARIOS DE LA BASE (se ve el usuario desactivado)
 
 GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwNGNhYzg2NC1hNjA1LTQ0MDEtOWE1Yy1iZDYwOTAyM2Q2ZmIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDI0MCwiZXhwIjoxNzQ3NzYwNDIwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.DVRjwIvLxDpctc6VUhONL_HGLA_YNuNMe06efnnLT342KfE9q9y990J8SX1lFctrs_RJDwIMOkY1nl_sYx4l_g
 
 ### BORRA UN USUARIO: hay que cambiar en la URL el ID de usuario con uno de los creados
 
-DELETE http://127.0.0.1:8080/user/0141c704-cdf3-4f4a-8fe6-95117151af62
+DELETE http://127.0.0.1:8080/user/4defccbe-78bb-4cd8-a3e3-09af3a562af1
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwNGNhYzg2NC1hNjA1LTQ0MDEtOWE1Yy1iZDYwOTAyM2Q2ZmIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDI0MCwiZXhwIjoxNzQ3NzYwNDIwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.DVRjwIvLxDpctc6VUhONL_HGLA_YNuNMe06efnnLT342KfE9q9y990J8SX1lFctrs_RJDwIMOkY1nl_sYx4l_g
 
-### LISTA LOS USUARIOS DE LA BASE
+### LISTA LOS USUARIOS DE LA BASE (ya no está el usuario borrado)
 
 GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwNGNhYzg2NC1hNjA1LTQ0MDEtOWE1Yy1iZDYwOTAyM2Q2ZmIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDI0MCwiZXhwIjoxNzQ3NzYwNDIwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.DVRjwIvLxDpctc6VUhONL_HGLA_YNuNMe06efnnLT342KfE9q9y990J8SX1lFctrs_RJDwIMOkY1nl_sYx4l_g
 
 ### MODIFICA UN USUARIO: hay que cambiar en el body el ID de usuario con uno de los creados
 
@@ -153,10 +155,10 @@ PUT http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlY2M4NjcwYi1hZTdiLTQ3ODEtYTk0OC02YmY4MWNjYWM5YzkiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzM0NTUwNywiZXhwIjoxNzQ3MzQ1Njg3LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.7hCW39lq4iymG1Pkl3X8yJSvzOGvxp6UFbHE913qrtCwSJ9kwyVbwTmWgRo2JrJl2EkqhW1M1XtvKWANqi70Qg
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwNGNhYzg2NC1hNjA1LTQ0MDEtOWE1Yy1iZDYwOTAyM2Q2ZmIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDI0MCwiZXhwIjoxNzQ3NzYwNDIwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.DVRjwIvLxDpctc6VUhONL_HGLA_YNuNMe06efnnLT342KfE9q9y990J8SX1lFctrs_RJDwIMOkY1nl_sYx4l_g
 
 {
-    "id": "0141c704-cdf3-4f4a-8fe6-95117151af62",
+    "id": "e0382caa-124a-4d60-8967-0f2dca916a4d",
     "name": "liomessi12",
     "email": "lmessi10@acme.cl",
     "password": "Hunter2@3!",
@@ -169,6 +171,6 @@ POST http://127.0.0.1:8080/auth/logout
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5YzExOWY4NS0yYzcxLTQ0YjktYmEwYi0xYTgyNDExZWI4MDUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NzE0ODYxNCwiZXhwIjoxNzQ3MTQ4Nzk0fQ.hl2MvpwWW5EFAjZ8dPNQx6pfXbHqpekg3PWdCk75VQ2dxsEg1Pdt1sWFB7ECjl1IABGC-68-BNRCxo0aTrsItQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwNGNhYzg2NC1hNjA1LTQ0MDEtOWE1Yy1iZDYwOTAyM2Q2ZmIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Nzc2MDI0MCwiZXhwIjoxNzQ3NzYwNDIwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.DVRjwIvLxDpctc6VUhONL_HGLA_YNuNMe06efnnLT342KfE9q9y990J8SX1lFctrs_RJDwIMOkY1nl_sYx4l_g
 
 ###

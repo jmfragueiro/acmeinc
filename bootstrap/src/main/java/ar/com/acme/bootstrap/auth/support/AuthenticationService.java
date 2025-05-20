@@ -10,8 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.principal.IPrincipal;
-import ar.com.acme.bootstrap.auth.types.IAuthenticationType;
+import ar.com.acme.adapter.principal.Principal;
+import ar.com.acme.bootstrap.auth.authtypes.IAuthenticationType;
 import ar.com.acme.bootstrap.errors.AuthException;
 import ar.com.acme.commons.Constants;
 import ar.com.acme.bootstrap.http.HttpRequestAuthorizationHeader;
@@ -46,7 +46,7 @@ public class AuthenticationService implements IAuthenticationService {
 
     @Override
     public Authentication authenticate(Authentication auth) {
-        var principal = (IPrincipal)auth.getPrincipal();
+        var principal = (Principal)auth.getPrincipal();
 
         if (principal == null) {
             throw new AuthException(Constants.MSJ_SES_ERR_INVALIDTOKEN);

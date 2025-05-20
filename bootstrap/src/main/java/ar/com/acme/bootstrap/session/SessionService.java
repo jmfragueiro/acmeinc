@@ -8,17 +8,17 @@ import java.util.UUID;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.principal.IPrincipal;
-import ar.com.acme.adapter.principal.IPrincipalService;
 import ar.com.acme.commons.Constants;
 import ar.com.acme.commons.Properties;
+import ar.com.acme.adapter.principal.Principal;
+import ar.com.acme.adapter.principal.PrincipalService;
 import ar.com.acme.bootstrap.errors.AuthException;
 import ar.com.acme.bootstrap.jws.IJwsService;
 
 @Service
 @RequiredArgsConstructor
 public class SessionService implements ISessionService {
-        private final IPrincipalService<IPrincipal> principalService;
+        private final PrincipalService principalService;
         private final IJwsService jwsService;
         private final Properties properties;
 
@@ -51,12 +51,12 @@ public class SessionService implements ISessionService {
         return principal.getName();
     }
 
-    private IPrincipal getPrincipalFromAuthentication(Authentication authentication) {
+    private Principal getPrincipalFromAuthentication(Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new AuthException(Constants.MSJ_SES_ERR_USERNOAUTH);
         }
 
-        var principal = (IPrincipal)authentication.getPrincipal();
+        var principal = (Principal)authentication.getPrincipal();
 
         if (principal == null) {
             throw new AuthException(Constants.MSJ_SES_ERR_ONAUTH);
@@ -65,7 +65,7 @@ public class SessionService implements ISessionService {
         return principal;
     }
 
-    private void validateCanCreateSession(IPrincipal principal) {
+    private void validateCanCreateSession(Principal principal) {
         // permitirá o no multiples sesiones de usuario segun la propiedad
         // application.security.user_multisession en application.properties
         if (principal.getToken() != null && !properties.getSecurity().get("user_multisession").equalsIgnoreCase("true")) {
@@ -77,7 +77,7 @@ public class SessionService implements ISessionService {
         };
     }
 
-    private void validateCanDeleteSession(IPrincipal principal) {
+    private void validateCanDeleteSession(Principal principal) {
         if (principal.getToken() == null) {
             throw new AuthException(Constants.MSJ_SES_ERR_USERNOTLOGGED);
         }

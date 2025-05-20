@@ -3,7 +3,7 @@ package ar.com.acme.bootstrap.jws;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
-import ar.com.acme.adapter.principal.IPrincipal;
+import ar.com.acme.adapter.principal.Principal;
 
 /**
  * Esta interface implementa el comportamiento necesario aquí para el servicio
@@ -16,7 +16,7 @@ import ar.com.acme.adapter.principal.IPrincipal;
  * @version 20250505
  */
 public interface IJwsService {
-    String generateJws(IPrincipal source);
+    String generateJws(Principal source);
 
     void validateJws(String jws);
 

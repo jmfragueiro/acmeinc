@@ -2,6 +2,8 @@ package ar.com.acme.model.user;
 
 import ar.com.acme.model.phone.Phone;
 import ar.com.acme.commons.Constants;
+import ar.com.acme.commons.Logging;
+import ar.com.acme.commons.principal.IPrincipalUser;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +29,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends ar.com.acme.model.base.entity.Entity {
+public class User extends ar.com.acme.model.base.entity.Entity implements IPrincipalUser<UUID> {
     public static final String ENTITY_NAME = "User";
     public static final String FIELD_NAME = "Name";
     public static final String FIELD_EMAIL = "Email";
@@ -72,4 +74,19 @@ public class User extends ar.com.acme.model.base.entity.Entity {
     @Valid
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Phone> phones = new HashSet<>();
+
+    @Override
+    public boolean canOperate() {
+        if (!isAlive()) {
+            Logging.info(getClass(), Constants.MSJ_USR_ERR_DELETED);
+            return false;
+        }
+
+        if (!getActive()) {
+            Logging.info(getClass(), Constants.MSJ_USR_ERR_USERINACTIVE);
+            return false;
+        }
+
+        return true;
+    }
 }
